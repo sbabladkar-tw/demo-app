@@ -1,9 +1,19 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: failing-app
+  namespace: default
 spec:
-  containers:
-  - name: crash
-    image: busybox
-    command: ["/bin/sh", "-c", "echo Healthy! && sleep 3600"]
+  replicas: 1
+  selector:
+    matchLabels:
+      app: failing-app
+  template:
+    metadata:
+      labels:
+        app: failing-app
+    spec:
+      containers:
+        - name: crash
+          image: busybox
+          command: ["/bin/sh", "-c", "echo Crashing... && exit 1"]
