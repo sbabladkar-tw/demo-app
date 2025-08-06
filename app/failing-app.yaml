@@ -14,9 +14,6 @@ spec:
         app: failing-app
     spec:
       containers:
-      - name: crash
-        image: busybox
-        command:
-        - /bin/sh
-        - -c
-        - echo Healthy! && sleep 3600
+        - name: crash
+          image: busybox
+          command: ["/bin/sh", "-c", "echo Crashing... && exit 1"]
