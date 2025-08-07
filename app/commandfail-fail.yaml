@@ -1,4 +1,3 @@
-# Command Failure (CrashLoopBackOff) Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,6 +17,9 @@ spec:
         component: commandfail-fail
     spec:
       containers:
-        - name: test-container
-          image: busybox
-          command: ["sh", "-c", "exit 1"]
+      - name: test-container
+        image: busybox
+        command:
+        - nginx
+        - -g
+        - daemon off;
