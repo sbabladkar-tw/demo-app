@@ -15,8 +15,15 @@ spec:
     spec:
       containers:
       - name: crash
-        image: busybox
+        image:
+          image: nginx:latest
         command:
         - /bin/sh
         - -c
         - '-----------------------------'
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
