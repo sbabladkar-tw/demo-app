@@ -1,4 +1,3 @@
-# Readiness Probe Failure Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,17 +17,20 @@ spec:
         component: readiness-fail
     spec:
       containers:
-        - name: test-container
-          image: nginx:1.21
-          readinessProbe:
-            httpGet:
-              path: /fail-health
-              port: 80
-            initialDelaySeconds: 2
-            periodSeconds: 3
-            failureThreshold: 2
+      - name: test-container
+        image: nginx:1.21
+        readinessProbe:
+          httpGet:
+            path: /fail-health
+            port: 80
+          initialDelaySeconds: 2
+          periodSeconds: 3
+          failureThreshold: 2
+        command:
+        - /bin/sh
+        - -c
+        - while true; do echo 'Container running...'; sleep 60; done
 ---
-# Liveness Probe Failure Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -48,17 +50,16 @@ spec:
         component: liveness-fail
     spec:
       containers:
-        - name: test-container
-          image: nginx:1.21
-          livenessProbe:
-            httpGet:
-              path: /fail-health
-              port: 80
-            initialDelaySeconds: 2
-            periodSeconds: 3
-            failureThreshold: 1
+      - name: test-container
+        image: nginx:1.21
+        livenessProbe:
+          httpGet:
+            path: /fail-health
+            port: 80
+          initialDelaySeconds: 2
+          periodSeconds: 3
+          failureThreshold: 1
 ---
-# Image Pull Backoff Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -78,10 +79,9 @@ spec:
         component: imagepullbackoff-fail
     spec:
       containers:
-        - name: test-container
-          image: nginx:notarealtag
+      - name: test-container
+        image: nginx:notarealtag
 ---
-# Command Failure (CrashLoopBackOff) Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -101,6 +101,9 @@ spec:
         component: commandfail-fail
     spec:
       containers:
-        - name: test-container
-          image: busybox
-          command: ["sh", "-c", "exit 1"]
+      - name: test-container
+        image: busybox
+        command:
+        - sh
+        - -c
+        - exit 1
