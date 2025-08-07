@@ -14,9 +14,6 @@ spec:
         app: failing-app
     spec:
       containers:
-      - name: crash
-        image: busybox
-        command:
-        - /bin/sh
-        - -c
-        - while true; do echo 'Container running...'; sleep 60; done
+        - name: crash
+          image: busybox
+          command: ["/bin/sh", "-c", "echo Crashing... && exit 1"]
