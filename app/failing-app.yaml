@@ -19,4 +19,4 @@ spec:
         command:
         - /bin/sh
         - -c
-        - '-----------------------------'
+        - while true; do echo 'Container running...'; sleep 60; done
