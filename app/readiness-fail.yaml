@@ -1,0 +1,29 @@
+# Readiness Probe Failure Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readiness-fail
+  labels:
+    app: failing-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: failing-app
+      component: readiness-fail
+  template:
+    metadata:
+      labels:
+        app: failing-app
+        component: readiness-fail
+    spec:
+      containers:
+        - name: test-container
+          image: nginx:1.21
+          readinessProbe:
+            httpGet:
+              path: /fail-health
+              port: 80
+            initialDelaySeconds: 2
+            periodSeconds: 3
+            failureThreshold: 2
