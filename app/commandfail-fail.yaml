@@ -1,0 +1,23 @@
+# Command Failure (CrashLoopBackOff) Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: commandfail-fail
+  labels:
+    app: failing-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: failing-app
+      component: commandfail-fail
+  template:
+    metadata:
+      labels:
+        app: failing-app
+        component: commandfail-fail
+    spec:
+      containers:
+        - name: test-container
+          image: busybox
+          command: ["sh", "-c", "exit 1"]
