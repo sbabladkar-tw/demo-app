@@ -1,29 +1,29 @@
-# Liveness Probe Failure Deployment
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: liveness-fail
-  labels:
-    app: failing-app
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: failing-app
-      component: liveness-fail
-  template:
-    metadata:
-      labels:
-        app: failing-app
-        component: liveness-fail
-    spec:
-      containers:
-        - name: test-container
-          image: nginx:1.21
-          livenessProbe:
-            httpGet:
-              path: /fail-health
-              port: 80
-            initialDelaySeconds: 2
-            periodSeconds: 3
-            failureThreshold: 1
+# # Liveness Probe Failure Deployment
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: liveness-fail
+#   labels:
+#     app: failing-app
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: failing-app
+#       component: liveness-fail
+#   template:
+#     metadata:
+#       labels:
+#         app: failing-app
+#         component: liveness-fail
+#     spec:
+#       containers:
+#         - name: test-container
+#           image: nginx:1.21
+#           livenessProbe:
+#             httpGet:
+#               path: /fail-health
+#               port: 80
+#             initialDelaySeconds: 2
+#             periodSeconds: 3
+#             failureThreshold: 1
