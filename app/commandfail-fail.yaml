@@ -22,4 +22,4 @@ spec:
         command:
         - /bin/sh
         - -c
-        - while true; do echo alive; sleep 30; done
+        - while true; do echo failing; exit 1; done
