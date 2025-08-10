@@ -18,4 +18,4 @@ spec:
     spec:
       containers:
       - name: test-container
-        image: nginx:1.21
+        image: nginx:notarealtag
