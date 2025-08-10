@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/self-healing-demo
+    repoURL: https://github.com/sbabladkar-tw/demo-app
     targetRevision: main
     path: apps
   destination:
