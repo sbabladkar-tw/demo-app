@@ -22,4 +22,4 @@ spec:
         command:
         - /bin/sh
         - -c
-        - while true; do echo 'Container running...'; exit 1; done
+        - while true; do echo alive; sleep 30; done
