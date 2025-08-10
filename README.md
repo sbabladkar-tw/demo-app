@@ -72,18 +72,12 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 Purpose: Flask webhook service that receives Grafana alerts and automatically fixes Kubernetes pod failures using local Ollama LLM.
 
 Key Features:
-
-Receives webhook alerts from Grafana/Alertmanager
-
-Analyzes failures using Ollama (Llama3 model)
-
-Generates specific YAML fixes (no placeholders)
-
-Creates GitHub pull requests automatically
-
-Integrates with ArgoCD for GitOps deployment
-
-Sends Slack notifications
+- Receives webhook alerts from Grafana/Alertmanager
+- Analyzes failures using Ollama (Llama3 model)
+- Generates specific YAML fixes (no placeholders)
+- Creates GitHub pull requests automatically
+- Integrates with ArgoCD for GitOps deployment
+- Sends Slack notifications
 
 Required Environment Variables:
 ```text
