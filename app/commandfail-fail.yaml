@@ -1,25 +1,25 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: commandfail-fail
-  labels:
-    app: failing-app
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: failing-app
-      component: commandfail-fail
-  template:
-    metadata:
-      labels:
-        app: failing-app
-        component: commandfail-fail
-    spec:
-      containers:
-      - name: test-container
-        image: busybox
-        command:
-        - /bin/sh
-        - -c
-        - while true; do echo 'Container running...'; sleep 60; done
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: commandfail-fail
+#   labels:
+#     app: failing-app
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: failing-app
+#       component: commandfail-fail
+#   template:
+#     metadata:
+#       labels:
+#         app: failing-app
+#         component: commandfail-fail
+#     spec:
+#       containers:
+#       - name: test-container
+#         image: busybox
+#         command:
+#         - /bin/sh
+#         - -c
+#         - while true; do echo 'Container running...'; sleep 60; done
