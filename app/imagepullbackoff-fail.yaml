@@ -1,21 +1,21 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: imagepullbackoff-fail
-  labels:
-    app: failing-app
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: failing-app
-      component: imagepullbackoff-fail
-  template:
-    metadata:
-      labels:
-        app: failing-app
-        component: imagepullbackoff-fail
-    spec:
-      containers:
-      - name: test-container
-        image: nginx:1.21
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: imagepullbackoff-fail
+#   labels:
+#     app: failing-app
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: failing-app
+#       component: imagepullbackoff-fail
+#   template:
+#     metadata:
+#       labels:
+#         app: failing-app
+#         component: imagepullbackoff-fail
+#     spec:
+#       containers:
+#       - name: test-container
+#         image: nginx:1.21
